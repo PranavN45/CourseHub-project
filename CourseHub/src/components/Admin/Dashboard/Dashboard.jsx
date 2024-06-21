@@ -176,10 +176,10 @@ const Dashboard = () => {
 
             <Box p={['0', '16']} boxSizing="border-box" py="4">
               <Heading textAlign={'center'} size="md" mb="4" children="Users" />
-
+{/* 
               <DoughnutChart
                 users={[subscriptionCount, usersCount - subscriptionCount]}
-              />
+              /> */}
             </Box>
           </Grid>
         </Box>
