@@ -26,12 +26,12 @@ const Footer = () => {
           fontSize={50}
         >
           <a
-            href="https://www.linkedin.com/in/pranav-nalawade"
+            href="https://www.linkedin.com/in/pranav-nalawade-2a282022b/"
             target={'blank'}
           >
             <TiSocialLinkedinCircular />
           </a>
-          <a href="https://instagram.com/p.r.a.n.v/" target={'blank'}>
+          <a href="https://www.instagram.com/_p.r.a.n.a.v_7/" target={'blank'}>
             <TiSocialInstagramCircular />
           </a>
           <a href="https://github.com/pranavN45/" target={'blank'}>

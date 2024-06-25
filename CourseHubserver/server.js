@@ -17,11 +17,11 @@ export const instance = new RazorPay({
   key_secret: process.env.RAZORPAY_API_SECRET,
 });
 
-nodeCron.schedule("0 0 0 5 * *", async () => {
+nodeCron.schedule("0 0 0 1 * *", async () => {
   try {
     await Stats.create({});
-  } catch (error) {
-    console.log(error);
+  } catch (error) {   
+     console.log(error);
   }
 });
 

@@ -314,13 +314,14 @@ export const deleteMyProfile = catchAsyncError(async (req, res, next) => {
 });
 
 // mongo ka ek watcher function joh real time data change krta rahega jaise hi update hoga toh ye function call hoga
-// User.watch().on("change", async () => {
-//   const stats = await Stats.find({}).sort({ createdAt: "desc" }).limit(1);
+User.watch().on("change", async () => {
+  
+  const stats = await Stats.find({}).sort({ createdAt: "desc" }).limit(1);
 
-//   const subscription = await User.find({ "subscription.status": "active" });
-//   stats[0].users = await User.countDocuments();
-//   stats[0].subscription = subscription.length;
-//   stats[0].createdAt = new Date(Date.now());
+  const subscription = await User.find({ "subscription.status": "active" });
+  stats[0].users = await User.countDocuments();
+  stats[0].subscription = subscription.length;
+  stats[0].createdAt = new Date(Date.now());
 
-//   await stats[0].save();
-// });
+  await stats[0].save();
+});
