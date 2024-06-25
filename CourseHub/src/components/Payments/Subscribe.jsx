@@ -25,7 +25,7 @@ const Subscribe = ({ user }) => {
   const subscribeHandler = async () => {
     const {
       data: { key },
-    } = await axios.get('http://localhost:4000/api/v1/razorpaykey');
+    } = await axios.get(`${server}/razorpaykey`);
     setKey(key);
     dispatch(buySubscription());
   };
@@ -47,7 +47,7 @@ const Subscribe = ({ user }) => {
           description: 'Get access to all the premium content',
           image: logo,
           subscription_id: subscriptionId,
-          callback_url: 'http://localhost:4000/api/v1/paymentverification',
+          callback_url: `${server}/paymentverification`,
           prefill: {
             name: user.name,
             email: user.email,
