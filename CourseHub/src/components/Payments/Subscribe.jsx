@@ -7,6 +7,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import axios from 'axios';
+import { server } from '../../redux/store';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { buySubscription } from '../../redux/actions/user';
