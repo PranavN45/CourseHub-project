@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { server } from '../store';
 export const contactUs = (name, email, message) => async dispatch => {
   try {
     const config = {
@@ -11,7 +11,7 @@ export const contactUs = (name, email, message) => async dispatch => {
     dispatch({ type: 'contactRequest' });
 
     const { data } = await axios.post(
-      `http://localhost:4000/api/v1/contact`,
+      `${server}/contact`,
       { name, email, message },
       config
     );
@@ -37,7 +37,7 @@ export const courseRequest = (name, email, course) => async dispatch => {
     dispatch({ type: 'courseRequestRequest' });
 
     const { data } = await axios.post(
-      `http://localhost:4000/api/v1/courserequest`,
+      `${server}/courserequest`,
       { name, email, course },
       config
     );

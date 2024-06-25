@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { server } from '../store'
 // http://localhost:4000/api/v1/login
 
 export const login = (email, password) => async dispatch => {
@@ -7,7 +7,7 @@ export const login = (email, password) => async dispatch => {
     dispatch({ type: 'loginRequest' });
 
     const { data } = await axios.post(
-      'http://localhost:4000/api/v1/login',
+      `${server}/login`,
       { email, password },
       {
         headers: {
@@ -29,7 +29,7 @@ export const register = formdata => async dispatch => {
     dispatch({ type: 'registerRequest' });
 
     const { data } = await axios.post(
-      'http://localhost:4000/api/v1/register',
+      `${server}/register`,
       formdata,
       {
         headers: {
@@ -50,7 +50,7 @@ export const loadUser = () => async dispatch => {
   try {
     dispatch({ type: 'loadUserRequest' });
 
-    const { data } = await axios.get('http://localhost:4000/api/v1/me', {
+    const { data } = await axios.get(`${server}/me`, {
       withCredentials: true,
     });
 
@@ -64,7 +64,7 @@ export const logout = () => async dispatch => {
   try {
     dispatch({ type: 'logoutRequest' });
 
-    const { data } = await axios.get('http://localhost:4000/api/v1/logout', {
+    const { data } = await axios.get(`${server}/logout`, {
       withCredentials: true,
     });
 
@@ -79,7 +79,7 @@ export const buySubscription = () => async dispatch => {
     dispatch({ type: 'buySubscriptionRequest' });
 
     const { data } = await axios.get(
-      'http://localhost:4000/api/v1/subscribe',
+      `${server}/subscribe`,
 
       {
         withCredentials: true,
@@ -100,7 +100,7 @@ export const cancelSubscription = () => async dispatch => {
     dispatch({ type: 'cancelSubscriptionRequest' });
 
     const { data } = await axios.delete(
-      'http://localhost:4000/api/v1/subscribe/cancel',
+      `${server}/cancel`,
 
       {
         withCredentials: true,

@@ -105,7 +105,7 @@ const Courses = () => {
   const { loading, courses, error, message } = useSelector(
     state => state.course
   );
-  console.log({ courses });
+  
 
   useEffect(() => {
     dispatch(getAllCourses(category, keyword));

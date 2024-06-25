@@ -18,3 +18,5 @@ const store = configureStore({
 
 export default store;
 
+export const server = 'https://coursehub-project.onrender.com/api/v1';
+

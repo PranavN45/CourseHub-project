@@ -1,4 +1,5 @@
 import axios from 'axios';
+import{server} from '../store'
 
 export const createCourse = formData => async dispatch => {
   try {
@@ -11,7 +12,7 @@ export const createCourse = formData => async dispatch => {
     dispatch({ type: 'createCourseRequest' });
 
     const { data } = await axios.post(
-      `http://localhost:4000/api/v1/createcourse`,
+      `${server}/createcourse`,
       formData,
       config
     );
@@ -32,10 +33,7 @@ export const deleteCourse = id => async dispatch => {
     };
     dispatch({ type: 'deleteCourseRequest' });
 
-    const { data } = await axios.delete(
-      `http://localhost:4000/api/v1/course/${id}`,
-      config
-    );
+    const { data } = await axios.delete(`${server}/${id}`, config);
 
     dispatch({ type: 'deleteCourseSuccess', payload: data.message });
   } catch (error) {
@@ -56,11 +54,7 @@ export const addLecture = (id, formdata) => async dispatch => {
     };
     dispatch({ type: 'addLectureRequest' });
 
-    const { data } = await axios.post(
-      `http://localhost:4000/api/v1/course/${id}`,
-      formdata,
-      config
-    );
+    const { data } = await axios.post(`${server}/${id}`, formdata, config);
 
     dispatch({ type: 'addLectureSuccess', payload: data.message });
   } catch (error) {
@@ -79,7 +73,7 @@ export const deleteLecture = (courseId, lectureId) => async dispatch => {
     dispatch({ type: 'deleteLectureRequest' });
 
     const { data } = await axios.delete(
-      `http://localhost:4000/api/v1/lecture?courseId=${courseId}&lectureId=${lectureId}`,
+      `${server}/lecture?courseId=${courseId}&lectureId=${lectureId}`,
       config
     );
 
@@ -99,10 +93,7 @@ export const getAllUsers = () => async dispatch => {
     };
     dispatch({ type: 'getAllUsersRequest' });
 
-    const { data } = await axios.get(
-      `http://localhost:4000/api/v1/admin/users`,
-      config
-    );
+    const { data } = await axios.get(`${server}/admin/users`, config);
 
     dispatch({ type: 'getAllUsersSuccess', payload: data.users });
   } catch (error) {
@@ -120,11 +111,7 @@ export const updateUserRole = id => async dispatch => {
     };
     dispatch({ type: 'updateUserRoleRequest' });
 
-    const { data } = await axios.put(
-      `http://localhost:4000/api/v1/admin/user/${id}`,
-      {},
-      config
-    );
+    const { data } = await axios.put(`${server}/${id}`, {}, config);
 
     dispatch({ type: 'updateUserRoleSuccess', payload: data.message });
   } catch (error) {
@@ -142,10 +129,7 @@ export const deleteUser = id => async dispatch => {
     };
     dispatch({ type: 'deleteUserRequest' });
 
-    const { data } = await axios.delete(
-      `http://localhost:4000/api/v1/admin/user/${id}`,
-      config
-    );
+    const { data } = await axios.delete(`${server}/${id}`, config);
 
     dispatch({ type: 'deleteUserSuccess', payload: data.message });
   } catch (error) {
@@ -163,10 +147,7 @@ export const getDashboardStats = () => async dispatch => {
     };
     dispatch({ type: 'getAdminStatsRequest' });
 
-    const { data } = await axios.get(
-      `http://localhost:4000/api/v1/admin/stats`,
-      config
-    );
+    const { data } = await axios.get(`${server}/admin/stats`, config);
 
     dispatch({ type: 'getAdminStatsSuccess', payload: data });
   } catch (error) {

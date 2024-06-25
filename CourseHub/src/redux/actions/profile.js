@@ -1,11 +1,11 @@
 import axios from 'axios';
-
+import { server } from '../store';  
 export const updateProfile = (name, email) => async dispatch => {
   try {
     dispatch({ type: 'updateProfileRequest' });
 
     const { data } = await axios.put(
-      'http://localhost:4000/api/v1/updateprofile',
+      `${server}/updateprofile`,
       {
         name,
         email,
@@ -32,7 +32,7 @@ export const changePassword = (oldPassword, newPassword) => async dispatch => {
     dispatch({ type: 'changePasswordRequest' });
 
     const { data } = await axios.put(
-      'http://localhost:4000/api/v1/changepassword',
+      `${server}/changepassword`,
       {
         oldPassword,
         newPassword,
@@ -59,7 +59,7 @@ export const resetPassword = (token, password) => async dispatch => {
     dispatch({ type: 'resetPasswordRequest' });
 
     const { data } = await axios.put(
-      `http://localhost:4000/api/v1/resetpassword/${token}`,
+      `${server}/${token}`,
       {
         password,
       },
@@ -85,7 +85,7 @@ export const forgetPassword = email => async dispatch => {
     dispatch({ type: 'forgetPasswordRequest' });
 
     const { data } = await axios.post(
-      'http://localhost:4000/api/v1/forgetpassword',
+      `${server}/forgetpassword`,
       {
         email,
       },
@@ -111,7 +111,7 @@ export const updateProfilePicture = formdata => async dispatch => {
     dispatch({ type: 'updateProfilePictureRequest' });
 
     const { data } = await axios.put(
-      'http://localhost:4000/api/v1/updateprofilepicture',
+      `${server}/updateprofilepicture`,
 
       formdata,
 
@@ -144,7 +144,7 @@ export const addToPlaylist = id => async dispatch => {
     };
 
     const { data } = await axios.post(
-      `http://localhost:4000/api/v1/addtoplaylist`,
+      `${server}/addtoplaylist`,
       {
         id,
       },
@@ -169,7 +169,7 @@ export const removeFromPlaylist = id => async dispatch => {
     };
 
     const { data } = await axios.delete(
-      `http://localhost:4000/api/v1/removefromplaylist?id=${id}`,
+      `${server}/removefromplaylist?id=${id}`,
 
       config
     );
