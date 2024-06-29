@@ -18,4 +18,4 @@ const PaymentFail = () => {
   );
 };
 
-export default PaymentFail
+export default PaymentFail ;
