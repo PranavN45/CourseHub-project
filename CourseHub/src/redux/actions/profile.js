@@ -59,7 +59,7 @@ export const resetPassword = (token, password) => async dispatch => {
     dispatch({ type: 'resetPasswordRequest' });
 
     const { data } = await axios.put(
-      `${server}/${token}`,
+      `${server}/resetpassword/${token}`,
       {
         password,
       },
